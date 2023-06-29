@@ -24,6 +24,6 @@ class NN:
             for p in self.model.parameters():
                 p.data += -learn_rate * p.grad
             
-            #print(k, self.loss.data)
+            print(k, self.loss.data)
     def predict(self, input_datapoint):
         return self.model(input_datapoint)

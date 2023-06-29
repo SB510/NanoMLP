@@ -21,7 +21,7 @@ test_data = data[n:]
 
 
 ##Training with JUST input context of 8 
-block_size = 8
+block_size = 3
 xtrain = []
 ytrain = []
 for i in range(block_size, len(train_data)-1, 1):
@@ -30,9 +30,9 @@ for i in range(block_size, len(train_data)-1, 1):
 print(xtrain[:100])
 print(ytrain[:100])
 
-mlp = MLP(8, [4,4,1])
-network = NN(mlp, xtrain[:100], ytrain[:100])
-network.train(200, 0.005)
+mlp = MLP(block_size, [3,3,1])
+network = NN(mlp, xtrain[:200], ytrain[:200])
+network.train(200, 0.001)
 phrase = "I am god"
 print(phrase)
 encoded_phrase = []
