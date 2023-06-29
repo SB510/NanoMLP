@@ -3,31 +3,25 @@ from Network import *
 
 
 class NN:
-    def __init__(self, model):
+    def __init__(self, model, trainX, trainY):
         self.model = model
-    def train(self):    
-        x = [2.0, 3.0, -1.0]
-        n = MLP(3, [4, 4, 1])
-
-        xs = [
-        [2.0, 3.0, -1.0],
-        [3.0, -1.0, 0.5],
-        [0.5, 1.0, 1.0],
-        [1.0, 1.0, -1.0],
-        ]
-        ys = [1.0, -1.0, -1.0, 1.0] # desired targets
-        for k in range(200):
+        self.trainX = trainX
+        self.trainY = trainY
+        self.predictions = []
+        self.loss = 0
+    def train(self, iterations):    
+        for k in range(iterations):
             # forward pass
-            ypred = [n(x) for x in xs]
-            loss = sum((yout - ygt)**2 for ygt, yout in zip(ys, ypred))
+            self.predictions = [self.model(x) for x in self.trainX]
+            self.loss = sum((yout - ygt)**2 for ygt, yout in zip(self.trainY, self.predictions))
             
             # backward pass
-            for p in n.parameters():
+            for p in self.model.parameters():
                 p.grad = 0.0
-            loss.backward()
+            self.loss.backward()
             
             # update
-            for p in n.parameters():
+            for p in self.model.parameters():
                 p.data += -0.01 * p.grad
             
-            print(k, loss.data)
+            print(k, self.loss.data)
