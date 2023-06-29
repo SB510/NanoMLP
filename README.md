@@ -1,2 +1,2 @@
 # NanoMLP
-A minimal MLP (multilayer perceptron) library 
+A minimal MLP (multilayer perceptron) library heavily based on micrograd
