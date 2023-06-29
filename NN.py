@@ -9,7 +9,7 @@ class NN:
         self.trainY = trainY
         self.predictions = []
         self.loss = 0
-    def train(self, iterations):    
+    def train(self, iterations, learn_rate):    
         for k in range(iterations):
             # forward pass
             self.predictions = [self.model(x) for x in self.trainX]
@@ -22,6 +22,8 @@ class NN:
             
             # update
             for p in self.model.parameters():
-                p.data += -0.01 * p.grad
+                p.data += -learn_rate * p.grad
             
-            print(k, self.loss.data)
+            #print(k, self.loss.data)
+    def predict(self, input_datapoint):
+        return self.model(input_datapoint)

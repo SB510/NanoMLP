@@ -12,5 +12,6 @@ xs = [
 ys = [1.0, -1.0, -1.0, 1.0] # desired targets
 
 network =  NN(n, xs, ys)
-network.train(200)
+network.train(200, 0.01)
 print(network.predictions)
+print(network.predict([2.0, -0.5,0, 1]))
