@@ -16,5 +16,6 @@ ys = [1.0, -1.0, -1.0, 1.0]
 #create NeuralNetwork wrapper
 network =  NN(n, xs, ys)
 network.train(200, 0.01) #train MLP 'n'
+
 print(network.predictions)
 print(network.predict([2.0, -0.5,0, 1])) #see prediction for new input

@@ -31,8 +31,8 @@ print(xtrain[:100])
 print(ytrain[:100])
 
 mlp = MLP(block_size, [3,3,1])
-network = NN(mlp, xtrain[:200], ytrain[:200])
-network.train(200, 0.001)
+network = NN(mlp, xtrain[:1000], ytrain[:1000])
+network.train(10, 0.01)
 phrase = "I am god"
 print(phrase)
 encoded_phrase = []
